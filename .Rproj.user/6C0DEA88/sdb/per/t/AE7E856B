@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "shinyServer(\n  function(input,output,session)\n  {\n    output$listingplot <- renderPlot(\n      {\n        if(input$Attributes == \"Location\")\n        {\n          newlistings <- subset(listings,\n                                listings$neighbourhood_cleansed == input$InputLocation,\n                                select = c(\"latitude\",\n                                           \"longitude\",\n                                           \"property_type\",\n                                           \"transformed_price\",\n                                           \"neighbourhood_cleansed\"))\n          plot(newlistings$longitude,newlistings$latitude,col=\"blue\")\n          #hist(newlistings$transformed_price)\n        }\n        else if(input$Attributes == \"Property Type\")\n        {\n          newlistings <- subset(listings,\n                                listings$property_type == input$InputPropertyType,\n                                select = c(\"latitude\",\n                                           \"longitude\",\n                                           \"property_type\",\n                                           \"transformed_price\",\n                                           \"neighbourhood_cleansed\"))\n          plot(newlistings$longitude,newlistings$latitude,col=\"red\")\n          #hist(newlistings$transformed_price)\n        }\n        else if(input$Attributes == \"Rate\")\n        {\n          newlistings <- subset(listings,\n                                listings$transformed_price <= input$InputRate,\n                                select = c(\"latitude\",\n                                           \"longitude\",\n                                           \"property_type\",\n                                           \"transformed_price\",\n                                           \"neighbourhood_cleansed\"))\n          plot(newlistings$longitude,newlistings$latitude,col=\"green\")\n          #hist(newlistings$transformed_price)\n        }\n      }\n    )\n  }\n)\n\n",
+    "created" : 1509179867939.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2971144002",
+    "id" : "AE7E856B",
+    "lastKnownWriteTime" : 1509160075,
+    "last_content_update" : 1509160075,
+    "path" : "C:/B14 - Applied Statistical Analysis with R/Projects/Boston AirBnB/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
