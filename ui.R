@@ -1,3 +1,6 @@
+library(shiny)
+library(ggmap)
+library(ggplot2)
 shinyServer(
   ui <- fluidPage(
     
@@ -11,7 +14,7 @@ shinyServer(
                      sliderInput("InputRate", "Select range for Rates (USD)", 
                                  min = 0, max = 500, value = 10, step = 1)),
       conditionalPanel(condition = "input.Attributes == 'Location'",
-                       radioButtons("InputLocation", "Select Location", 
+                       selectInput("InputLocation", "Select Location", 
                                    choices = c("Allston",
                                    "Back Bay",
                                    "Bay Village",
@@ -38,7 +41,7 @@ shinyServer(
                                    "West End",
                                    "West Roxbury"))),
       conditionalPanel(condition = "input.Attributes == 'Property Type'",
-                       radioButtons("InputPropertyType", "Select Type of Property", 
+                       selectInput("InputPropertyType", "Select Type of Property", 
                                           choices = c("Apartment",
                                           "Bed & Breakfast",
                                           "Boat",
@@ -53,6 +56,12 @@ shinyServer(
                                           "Townhouse",
                                           "Villa")))
       ),
-    mainPanel(plotOutput("listingplot"))
+    mainPanel(
+      tabsetPanel(type = "tabs",
+                  tabPanel("Plot", plotOutput("listingplot")),
+                  tabPanel("Summary",verbatimTextOutput("summarytable")),
+                  tabPanel("Review",verbatimTextOutput("ReviewOut"))
+      )
   )
+)
 )

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(shiny)\nlibrary(ggmap)\nlibrary(ggplot2)\nshinyServer(\n  ui <- fluidPage(\n    \n    headerPanel(\"Boston Air BnB Listing Visualizations\"),\n    \n    sidebarPanel\n    (\n      selectInput(\"Attributes\", \"Select Attribute to Visualize\", \n                 choices = c(\"Property Type\",\"Location\",\"Rate\")),\n      conditionalPanel(condition = \"input.Attributes == 'Rate'\",\n                     sliderInput(\"InputRate\", \"Select range for Rates (USD)\", \n                                 min = 0, max = 500, value = 10, step = 1)),\n      conditionalPanel(condition = \"input.Attributes == 'Location'\",\n                       selectInput(\"InputLocation\", \"Select Location\", \n                                   choices = c(\"Allston\",\n                                   \"Back Bay\",\n                                   \"Bay Village\",\n                                   \"Beacon Hill\",\n                                   \"Brighton\",\n                                   \"Charlestown\",\n                                   \"Chinatown\",\n                                   \"Dorchester\",\n                                   \"Downtown\",\n                                   \"East Boston\",\n                                   \"Fenway\",\n                                   \"Hyde Park\",\n                                   \"Jamaica Plain\",\n                                   \"Leather District\",\n                                   \"Longwood Medical Area\",\n                                   \"Mattapan\",\n                                   \"Mission Hill\",\n                                   \"North End\",\n                                   \"Roslindale\",\n                                   \"Roxbury\",\n                                   \"South Boston\",\n                                   \"South Boston Waterfront\",\n                                   \"South End\",\n                                   \"West End\",\n                                   \"West Roxbury\"))),\n      conditionalPanel(condition = \"input.Attributes == 'Property Type'\",\n                       selectInput(\"InputPropertyType\", \"Select Type of Property\", \n                                          choices = c(\"Apartment\",\n                                          \"Bed & Breakfast\",\n                                          \"Boat\",\n                                          \"Camper/RV\",\n                                          \"Condominium\",\n                                          \"Dorm\",\n                                          \"Entire Floor\",\n                                          \"Guesthouse\",\n                                          \"House\",\n                                          \"Loft\",\n                                          \"Other\",\n                                          \"Townhouse\",\n                                          \"Villa\")))\n      ),\n    mainPanel(\n      tabsetPanel(type = \"tabs\",\n                  tabPanel(\"Plot\", plotOutput(\"listingplot\")),\n                  tabPanel(\"Summary\",verbatimTextOutput(\"summarytable\")),\n                  tabPanel(\"Review\",verbatimTextOutput(\"ReviewOut\"))\n      )\n  )\n)\n)\n",
+    "created" : 1509540625425.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1205678598",
+    "id" : "CE68390A",
+    "lastKnownWriteTime" : 1509500740,
+    "last_content_update" : 1509500740,
+    "path" : "C:/B14 - Applied Statistical Analysis with R/Projects/Boston AirBnB/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+        "docOutlineVisible" : "0"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
